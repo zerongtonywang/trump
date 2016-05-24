@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" action="{% url 'no:add' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Pitch In">
+    </form>
+{% endblock %}

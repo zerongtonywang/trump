@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <style>
+        ul.share-buttons {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.share-buttons li {
+            display: inline;
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    {% include "track.html" %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/rango-ajax.js" %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    <h1 style="font-size: 48px">{{ quote }}</h1>
+
+   {% comment %} <p>{{ likes }} - <a href="">Upvote</a></p>{% endcomment %}
+
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div{% if 'success' in message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <a id="get-another-link" href="">Get another</a>
+
+    <a id="add-response-link" href="{% url 'no:add' %}">Add response</a>
+
+    <ul class="share-buttons">
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fistrumpgoingtobepresident.com&t=Is%20trump%20going%20to%20be%20president%3F"
+               title="Share on Facebook" target="_blank"><img src="{% static 'images/simple_icons_black/Facebook.png' %}"></a></li>
+        <li>
+            <a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fistrumpgoingtobepresident.com&text=Is%20trump%20going%20to%20be%20president%3F:%20http%3A%2F%2Fistrumpgoingtobepresident.com"
+               target="_blank" title="Tweet"><img src="{% static 'images/simple_icons_black/Twitter.png' %}"></a></li>
+        <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fistrumpgoingtobepresident.com" target="_blank"
+               title="Share on Google+"><img src="{% static 'images/simple_icons_black/Google+.png' %}"></a></li>
+        <li>
+            <a href="http://www.tumblr.com/share?v=3&u=http%3A%2F%2Fistrumpgoingtobepresident.com&t=Is%20trump%20going%20to%20be%20president%3F&s="
+               target="_blank" title="Post to Tumblr"><img src="{% static 'images/simple_icons_black/Tumblr.png' %}"></a></li>
+        <li>
+            <a href="http://www.reddit.com/submit?url=http%3A%2F%2Fistrumpgoingtobepresident.com&title=Is%20trump%20going%20to%20be%20president%3F"
+               target="_blank" title="Submit to Reddit"><img src="{% static 'images/simple_icons_black/Reddit.png' %}"></a></li>
+    </ul>
+
+{% endblock %}
