@@ -12,6 +12,7 @@ def mark_invalid(modeladmin, request, queryset):
 
 class QuoteAdmin(admin.ModelAdmin):
     list_display = ('quote_text', 'quote_valid')
+    ordering = ("-quote_valid",)
     actions = [mark_valid, mark_invalid]
 
 
