@@ -64,3 +64,4 @@ target/
 .idea/
 trump/settings.py
 templates/track.html
+db.sqlite3
